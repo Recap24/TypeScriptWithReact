@@ -1,10 +1,11 @@
-import TodoList from './TodoList';
+import From from "./Component/From";
+
 
 const App = () => {
+
     return (
         <div>
-
-            <TodoList />
+            <From/>
         </div>
     );
 };
