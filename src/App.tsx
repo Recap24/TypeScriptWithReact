@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import UserComponent from "./Component/UserComponent";
 const App = () => {
     const [count, setCount] = useState<number>(0);
     const increment = () => {
@@ -14,9 +15,10 @@ const App = () => {
             <h2>Current Count: {count}</h2>
             <button onClick={increment}>Increment</button>
             <button onClick={decrement}>Decrement</button>
+
+            <UserComponent/>
         </div>
     );
 };
 
 export default App;
-  
