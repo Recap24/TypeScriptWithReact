@@ -1,11 +1,22 @@
-import Counter from './Component/Counter';
 
+import { useState } from "react";
 const App = () => {
+    const [count, setCount] = useState<number>(0);
+    const increment = () => {
+        setCount(prevCount => prevCount + 1);
+    };
+    const decrement = () => {
+        setCount(prevCount => (prevCount > 0 ? prevCount - 1 : 0));
+    };
+
     return (
         <div>
-            <Counter/>
+            <h2>Current Count: {count}</h2>
+            <button onClick={increment}>Increment</button>
+            <button onClick={decrement}>Decrement</button>
         </div>
     );
 };
 
 export default App;
+  
