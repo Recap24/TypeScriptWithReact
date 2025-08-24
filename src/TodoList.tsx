@@ -1,34 +1,37 @@
+import { useState } from 'react';
 
-import { useState } from "react";
+interface Todo {
+    id: number;
+    task: string;
+    completed: boolean;
+};
+
+
 const TodoList = () => {
-    const [todo, setTodo] = useState<string>("");
-    const [todos, setTodos] = useState<string[]>([]);
-
-    const addTodo = () => {
-        if (todo) {
-            setTodos([...todos, todo]);
-            setTodo("");
-        }
+    const [todo , setTodo] = useState<Todo[]>([]);
+    const [newTodo, setNewTodo] = useState<string>("");
+    const addTodo = (task: string) => {
+        const newTodoItem: Todo = {
+            id: todo.length + 1,
+            task,
+            completed: false,
+        };
+        setTodo(prevTodos => [...prevTodos, newTodoItem]);
     };
-
     return (
-      <div>
-        <input
-          type="text"
-          value={todo}
-          placeholder="Enter a new todo"
-          onChange={(e) => setTodo(e.target.value)}
-        />
-        
-        <button onClick={addTodo}>Add Todo</button>
-    
-        <button onClick={() => setTodos([])}>Clear Todos</button>
-        <ul>
-          {todos.map((t, index) => (
-            <li key={index}>{t}</li>
-          ))}
-        </ul>
-      </div>
+        <div>
+            <h2>Todo List</h2>
+            <input type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} />
+            <button onClick={() => { addTodo(newTodo); setNewTodo(""); }}>Add Todo</button>
+
+            <ul>
+                {todo.map(todo => (
+                    <li key={todo.id}>
+                        {todo.task} {todo.completed ? "(Completed)" : ""}
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
 
