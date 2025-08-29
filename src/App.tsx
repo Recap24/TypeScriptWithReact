@@ -1,13 +1,11 @@
-import From from "./Component/From";
-
+import Theme from "./Component/Theme";
 
 const App = () => {
-
-    return (
-        <div>
-            <From/>
-        </div>
-    );
+  return (
+    <div className="flex justify-center items-center w-full mt-[10rem]">
+      <Theme />
+    </div>
+  );
 };
 
 export default App;
